@@ -8,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Black dogs</title>
+      <title>Kahu</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -33,10 +33,9 @@
    <!-- body -->
    <body class="main-layout">
       <!-- loader  -->
-      <div class="loader_bg">
+      <div class="loader_bg" id="loader_bg">
          <div class="loader"><img src="images/loading.gif" alt="#" /></div>
       </div>
-      <!-- end loader -->
       <!-- end loader -->
       <!-- header -->
       <header>
@@ -57,9 +56,8 @@
             <nav class="nav">
                <div class="padded">
                   <ul>
-                     <li class="active"><a class="nav-section1" href="index.html">Hone</a></li>
-                     <li><a class="nav-section2" href="#">About </a></li>
-                     <li><a class="nav-section3" href="#">Traning </a></li>
+                     <li class="active"><a class="nav-section1" href="index.html">Home</a></li>
+                     <li><a class="nav-section2" href="about_page.html">About </a></li>
                      <li><a class="nav-section4" href="#">Gallery </a></li>
                      <li><a class="nav-section5" href="#">Contact </a></li>
                   </ul>
@@ -77,12 +75,13 @@
                <div class="col-md-6 padding_lrtb0">
                   <div class="bg">
                      <div class="text-bg">
-                        <span>WANT TO HAVE </span>
-                        <h1>A GOOD <br>FRIEND?  </h1>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majorityThere are many variations of passages of Lorem Ipsum available, but the majorityThere are many variations of passages of Lorem Ipsum available, but the majority</p>
-                        <a class="read_more" href="#">Contact Us</a>
-                        <a class="read_more" href="#">Buy Now</a>
-                     </div>
+                        <span>WELCOME </span>
+                        <span>TO </span>
+                        <h1> KAHU! </h1>
+                        <p>Discover the world of cat breeds with Kahu. Our easy-to-use platform helps you identify and learn about various cat breeds through detailed information and stunning images. Join us and explore the unique charm of each feline breed</p>
+                        <a class="read_more" href="#" id="upload-link">Upload image</a>
+                        <input type="file" id="upload-input" style="display: none;">
+                    </div>                    
                   </div>
                </div>
                <div class="col-md-6 padding_lrtb0">
@@ -106,7 +105,7 @@
                            <div class="container padding_lrtb0">
                               <div class="carousel-caption">
                                  <div class="images_box">
-                                    <figure><img src="images/babber_box.jpg"></figure>
+                                    <figure><img src="images/img3.jpg"></figure>
                                  </div>
                               </div>
                            </div>
@@ -115,7 +114,7 @@
                            <div class="container padding_lrtb0">
                               <div class="carousel-caption ">
                                  <div class="images_box">
-                                    <figure><img src="images/babber_box.jpg"></figure>
+                                    <figure><img src="images/img2.jpg"></figure>
                                  </div>
                               </div>
                            </div>
@@ -139,13 +138,13 @@
             <div class="row d_flex">
                <div class="col-md-7 padding-left">
                   <div class="about_img">
-                     <figure><img src="images/about_img.png" alt="#"/></figure>
+                     <figure><img src="images/about_img.jpg" alt="#"/></figure>
                   </div>
                </div>
                <div class="col-md-5">
                   <div class="titlepage">
-                     <h2>About Black Dogs</h2>
-                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. </p>
+                     <h2>About Kahu</h2>
+                     <p>Our cutting-edge Cat Breed Identifier app combines a user-friendly interface with accurate identification capabilities to determine cat breeds from images. Simply upload a photo of a cat, and the app swiftly analyzes key features to provide you with precise breed information. Ideal for cat enthusiasts, breeders, and veterinarians, our app offers a smooth and efficient solution for identifying various cat breeds, enhancing your feline knowledge and care experience.</p>
                      <a class="read_more">Read More</a>
                   </div>
                </div>
@@ -159,8 +158,8 @@
             <div class="row d_flex">
                <div class="col-md-4">
                   <div class="titlepage">
-                     <h2>Our Dogs</h2>
-                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, and</p>
+                     <h2>Our Cats</h2>
+                     <p>Discover a wide range of cat breeds on our website, from the sleek Siamese to the fluffy Maine Coon. Each breed profile provides key details on physical traits, personality, and care needs, helping you find the perfect feline companion. Whether you're a seasoned cat lover or new to owning a cat, our site offers concise, informative descriptions to guide you.</p>
                      <a class="read_more" href="#">See More</a>
                   </div>
                </div>
@@ -182,105 +181,131 @@
                         <div class="carousel-item">
                            <div class="container">
                               <div class="carousel-caption relative">
-                                 <figure><img src="images/dog.jpg" alt="#"/></figure>
+                                 <figure><img src="images/catt.jpg" alt="#"/></figure>
                               </div>
                            </div>
                         </div>
                         <div class="carousel-item">
                            <div class="container">
                               <div class="carousel-caption relative">
-                                 <figure><img src="images/dog.jpg" alt="#"/></figure>
+                                 <figure><img src="images/catto.jpg" alt="#"/></figure>
                               </div>
                            </div>
                         </div>
                      </div>
                      <a class="carousel-control-prev" href="#Our_slide" role="button" data-slide="prev">
-                     <i class="fa fa-angle-left" aria-hidden="true"></i>
+                     <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                      </a>
                      <a class="carousel-control-next" href="#Our_slide" role="button" data-slide="next">
-                     <i class="fa fa-angle-right" aria-hidden="true"></i>
+                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                      </a>
                   </div>
                </div>
             </div>
          </div>
       </div>
-      <!-- Our -->
-      <!-- contact -->
-      <div class="contact">
+      <!-- end Our -->
+      <!-- offers -->
+      <div class="offers">
          <div class="container-fluid">
             <div class="row d_flex">
-               <div class="col-md-7 padding-left">
-                  <div class="cont">
-                     <figure><img src="images/conm.jpg" alt="#"/></figure>
+               <div class="col-md-6">
+                  <div class="titlepage">
+                     <h2>Offers Pets</h2>
+                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, and</p>
+                     <a class="read_more" href="#">See More</a>
                   </div>
                </div>
-               <div class="col-md-5">
-                  <form id="contact" class="main_form">
-                     <div class="row">
-                        <div class="col-md-12 ">
-                           <div class="titlepage">
-                              <h2>Contact</h2>
-                           </div>
-                        </div>
-                        <div class="col-md-12 ">
-                           <input class="contactus" placeholder="Name" type="type" name="Name"> 
-                        </div>
-                        <div class="col-md-12">
-                           <input class="contactus" placeholder="Email" type="type" name="Email"> 
-                        </div>
-                        <div class="col-md-12">
-                           <input class="contactus" placeholder="Phone" type="type" name="Phone">                          
-                        </div>
-                        <div class="col-md-12">
-                           <textarea class="textarea" placeholder="Message" type="type" Message="Name">Message </textarea>
-                        </div>
-                        <div class="col-md-12">
-                           <button class="send_btn">Send</button>
-                        </div>
-                     </div>
-                  </form>
+               <div class="col-md-6">
+                  <div class="offers_img">
+                     <figure><img src="images/offeres_img.jpg" alt="#"/></figure>
+                  </div>
                </div>
             </div>
          </div>
       </div>
-      <!-- end contact -->
-      <!--  footer -->
+      <!-- end offers -->
+      <!-- blog -->
+      <div class="blog">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Our Blog</h2>
+                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, and</p>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="blog_box">
+                     <div class="blog_img">
+                        <figure><img src="images/blog1.jpg" alt="#"/></figure>
+                     </div>
+                     <div class="blog_room">
+                        <h3>We import</h3>
+                        <span>It is a long established fact that a reader will be distracted by the readable</span>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, and </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="blog_box">
+                     <div class="blog_img">
+                        <figure><img src="images/blog2.jpg" alt="#"/></figure>
+                     </div>
+                     <div class="blog_room">
+                        <h3>We import</h3>
+                        <span>It is a long established fact that a reader will be distracted by the readable</span>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, and </p>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="blog_box">
+                     <div class="blog_img">
+                        <figure><img src="images/blog3.jpg" alt="#"/></figure>
+                     </div>
+                     <div class="blog_room">
+                        <h3>We import</h3>
+                        <span>It is a long established fact that a reader will be distracted by the readable</span>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, and </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end blog -->
+      <!-- footer -->
       <footer>
          <div class="footer">
             <div class="container">
-               <div class="row d_flex">
-                  <div class="col-md-6">
-                     <div class="address">
-                        <h3>Subscribe Now</h3>
+               <div class="row">
+                  <div class="col-md-4">
+                     <div class="titlepage">
+                        <h2>Contact Us</h2>
+                        <ul class="location_icon">
+                           <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a> Location</li>
+                           <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>demo@gmail.com</li>
+                           <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i></a> (+71) 9876543109</li>
+                        </ul>
                      </div>
-                     <form class="bottom_form">
-                        <div class="row">
-                           <div class="col-md-12">
-                              <input class="enter" placeholder="Enter Your email" type="text" name="Enter Your email">
-                           </div>
-                        </div>
-                        <button class="sub_btn">Submit</button>
-                     </form>
-                     <ul class="Menu_footer">
-                        <li><a href="#">Ph. 0123456789</a> </li>
-                        <li><a href="#">Email.demo@gmail.com</a> </li>
-                     </ul>
                   </div>
-                  <div class="col-md-6">
-                     <div class="map">
-                        <figure><img src="images/map.jpg" alt="#"/></figure>
+                  <div class="col-md-8">
+                     <div class="titlepage">
+                        <h2>Newsletter</h2>
+                        <form class="form_subscri">
+                           <input class="newsl" placeholder="Enter Your Email" type="text" name="Enter Your Email">
+                           <button class="subsci_btn">Subscribe</button>
+                        </form>
                      </div>
                   </div>
                </div>
             </div>
             <div class="copyright">
                <div class="container">
-                  <div class="row">
-                     <div class="col-md-8 offset-md-2">
-                        <p>© 2022 All Rights Reserved. <a href="https://html.design/"> Free  html Templates</a></p>
-                     </div>
-                  </div>
+                  <p>Copyright © 2021 Design by <a href="https://html.design/">Free HTML Templates</a></p>
                </div>
             </div>
          </div>
@@ -291,19 +316,35 @@
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
       <script src="js/jquery-3.0.0.min.js"></script>
+      <script src="js/plugin.js"></script>
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
       <script src="js/custom.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <!-- Hide loader after 20 seconds -->
       <script>
-         function openNav1() {
-         document.getElementById("side_bar").style.width = "250px";
-         }
-         
-         function closeNav1() {
-         document.getElementById("side_bar").style.width = "0";
-         }
+         setTimeout(function() {
+             document.getElementById('loader_bg').style.display = 'none';
+         }, 30000);
+      </script>
+      <script>
+         document.getElementById('upload-link').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('upload-input').click();
+});
+
+document.getElementById('upload-input').addEventListener('change', function() {
+    var file = this.files[0];
+    if (file) {
+        // You can add your file upload logic here
+        console.log('File selected:', file.name);
+        // For example, you can upload the file using AJAX or FormData API
+    }
+});
+
       </script>
    </body>
 </html>
+
 

@@ -254,6 +254,8 @@ button {
      background: #fff;
      width: 100%;
      height: 100%;
+     
+     transition-duration: 50s;
 }
 
 .loader {
@@ -265,10 +267,13 @@ button {
      display: flex;
      justify-content: center;
      align-items: center;
+     transition-duration: 50s;
 }
 
 .loader img {
      width: 280px;
+     
+     transition-duration: 50s;
 }
 
 
@@ -360,11 +365,11 @@ button {
 
 .scoll_to_id_menu ul li a:hover,
 .scoll_to_id_menu ul li a:focus {
-     background: #541eee;
+     background:#6a6674;
 }
 
 .scoll_to_id_menu ul li.active a {
-     background: #541eee;
+     background: #6a6674;
 }
 
 .scoll_to_id_menu {
@@ -466,7 +471,7 @@ button {
 
 .bg {
      height: 100%;
-     background: #541eee;
+     background: #6a6674;
 }
 
 .padding_lrtb0 {
@@ -495,7 +500,7 @@ button {
 #myCarousel .carousel-control-next i:hover,
 #myCarousel .carousel-control-prev i:focus,
 #myCarousel .carousel-control-prev i:hover {
-     background-color: #f4bb0c;
+     background-color: #6a6674;
      color: #fff;
 }
 
@@ -565,16 +570,17 @@ button {
 }
 
 .read_more:hover {
-     background: #fac533 !important;
+     background: #6a6674 !important;
      color: #fff !important;
      transition: ease-in all 0.5s;
+     
 }
 
 
 /** about section **/
 
 .about {
-     background: #541eee;
+     background: #6a6674;
 }
 
 .about .titlepage {
@@ -628,14 +634,14 @@ button {
 }
 
 .Our .titlepage h2 {
-     color: #000;
+     color: #fcfbfb;
 }
 
 .Our .titlepage p {
      font-size: 17px;
      font-weight: 300;
      line-height: 34px;
-     color: #08090b;
+     color: #fdfefe;
      padding: 20px 0px 40px 0px;
 }
 
@@ -669,7 +675,7 @@ button {
 #Our_slide .carousel-control-next i:hover,
 #Our_slide .carousel-control-prev i:focus,
 #Our_slide .carousel-control-prev i:hover {
-     background-color: #fac533;
+     background-color:#6a6674;
      color: #fff;
 }
 
@@ -694,7 +700,7 @@ button {
 /** contact section **/
 
 .contact {
-     background: #541eee;
+     background: #6a6674;
 }
 
 .contact .titlepage {
@@ -756,7 +762,7 @@ button {
 }
 
 .main_form .send_btn:hover {
-     background-color: #fac533;
+     background-color: #6a6674;
      transition: ease-in all 0.5s;
      color: #f6f6f8;
 }
@@ -844,7 +850,7 @@ ul.Menu_footer li a {
 }
 
 .sub_btn:hover {
-     background-color: #541eee;
+     background-color: #6a6674;
      transition: ease-in all 0.5s;
      color: #fff;
 }
