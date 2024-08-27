@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery of Fame</title>
+    <title>Contact Us</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,16 +15,16 @@
 
         .background-image {
             width: 100%;
-            height: 100vh;
-            object-fit: cover;
+            height: 100vh; /* Full viewport height */
+            object-fit: cover; /* Ensures the image covers the entire area */
             position: absolute;
             top: 0;
             left: 0;
-            z-index: -1;
+            z-index: -1; /* Position behind the text */
         }
 
         .heading-container {
-            background-color: rgba(106, 102, 116, 0.8);
+            background-color: rgba(106, 102, 116, 0.8); /* Purple bar with transparency */
             padding: 40px 20px;
             text-align: center;
             position: relative;
@@ -48,13 +48,6 @@
             position: relative;
         }
 
-        .paragraph-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
         p {
             margin-bottom: 20px;
             line-height: 1.6;
@@ -65,17 +58,13 @@
     </style>
 </head>
 <body>
-    <img src="images/catbg2.jpg" alt="Background Image" class="background-image">
+    <img src="images/catbg.jpg" alt="Background Image" class="background-image">
     
     <div class="heading-container">
-        <h3>Gallery of Fame: Most Popular Indian Cat Breeds</h3>
+        <h3>Want to get in contact with us?</h3>
     </div>
     <div class="paragraph-container">
-        <h4>1. Bengal Cat</h4>
-        <img src="bengal-cat.jpg" alt="Bengal Cat">
-        <p>Descendants of the Wild Asian Leopard Cat, Bengal Cats are one of the most intelligent and elegant domestic cat breeds in India. They are known to be very talkative and expressive. They also need a LOT of exercise, so keep up with their energy levels—build a play-area for them, take them out for walks, and get interactive cat toys!</p>
-        <p>Suitable for Indian climate</p>
-        <p>Life expectancy: 10 - 16 years</p>
+        <p>Hi, I'm Anushka, creator of Kahu. For any queries, you may contact me at [your email address here].</p>
     </div>
 </body>
 </html>
