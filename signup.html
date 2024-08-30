@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Kahu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            background-image: url('images/catbg2.jpg'); /* Set the background image */
+            background-size: cover; /* Cover the entire viewport */
+            background-attachment: fixed; /* Fix the background image */
+            background-position: center; /* Center the background image */
+        }
+
+        .signup-container {
+            background-color: rgba(255, 255, 255, 0.9); /* Transparent white background */
+            padding: 20px;
+            width: 350px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: calc(100% - 20px); /* Adjusting width to account for padding */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box; /* Ensures padding and border are included in the width */
+        }
+
+        .signup-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #575259;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .signup-button:hover {
+            background-color: #3e3b3b;
+        }
+
+        .social-signup {
+            position: relative; /* For positioning the circle */
+            margin: 20px 0;
+            padding-top: 10px; /* Ensure there's space between the button and the circle */
+        }
+
+        .social-signup hr {
+            width: 100%;
+            border: 1px solid #ccc;
+            margin: 0; /* No margin needed here */
+        }
+
+        .social-signup .or-container {
+            position: absolute;
+            left: 50%;
+            top: -5px; /* Align the circle perfectly on the horizontal line */
+            transform: translateX(-50%);
+            background-color: #fff;
+            width: 2em; /* Width of the circle */
+            height: 2em; /* Height of the circle */
+            border-radius: 50%; /* Makes it a circle */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            color: #575259;
+            border: 1px solid #ccc; /* Border to match hr */
+        }
+
+        .social-signup a {
+            display: block;
+            width: 100%;
+            max-width: 250px; /* Adjust width to fit well within the container */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            text-decoration: none;
+            color: #000;
+            text-align: center;
+            margin: 20px auto 0 auto; /* Add margin to create space between the circle and the button */
+            transition: background-color 0.3s;
+        }
+
+        .social-signup a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .signup-link {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color:black;
+        }
+
+        .signup-link a {
+            text-decoration: none;
+            color: #575259;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <p>Join us and explore more!</p>
+        <form action="#" method="POST">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+            <button type="submit" class="signup-button">Sign Up</button>
+        </form>
+        <div class="social-signup">
+            <hr>
+            <div class="or-container">or</div>
+            <a href="#">Sign up with Google</a>
+        </div>
+        <div class="signup-link">
+            Already have an account? <a href="login.html">login</a>
+        </div>
+    </div>
+</body>
+</html>
