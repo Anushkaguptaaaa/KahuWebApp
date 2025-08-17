@@ -1,0 +1,215 @@
+
+
+/*--------------------------------------------------------------------- File Name: responsive.css ---------------------------------------------------------------------*/
+
+
+/*------------------------------------------------------------------- 991px x 768px ---------------------------------------------------------------------*/
+
+@media (min-width: 1200px) and (max-width: 1342px) {
+    .navigation.navbar-dark .navbar-nav .nav-link {
+        padding: 0px 27px;
+    }
+    .text-bg {
+        max-width: 573px;
+    }
+    .text-bg h1 {
+        font-size: 74px;
+        line-height: 82px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .text-bg h1 {
+        font-size: 60px;
+        line-height: 80px;
+    }
+    .text-bg span {
+        font-size: 57px;
+    }
+    .cont figure img,
+    .about_img figure img {
+        height: 600px;
+    }
+    .text-bg .read_more {
+        max-width: 180px;
+    }
+    .images_box figure img {
+        height: 683px;
+    }
+    .padddd {
+        padding: 0;
+    }
+    .toggle_side_bar {
+        display: block;
+    }
+    .sidenav {
+        height: 100%;
+        width: 0;
+    }
+    .sidebar_page {
+        margin-left: 0;
+    }
+    .sidenav .closebtn {
+        display: block;
+    }
+    .main_section {
+        padding-left: 0px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .text-bg h1 {
+        padding-top: 0px;
+        font-size: 51px;
+        line-height: 70px;
+    }
+    .images_box figure img {
+        height: 683px;
+    }
+    .text-bg span {
+        font-size: 43px;
+    }
+    .cont figure img,
+    .about_img figure img {
+        height: 714px;
+    }
+    .padddd {
+        padding: 0;
+    }
+    .text-bg .read_more {
+        padding: 10px 0px;
+        max-width: 155px;
+    }
+    .about .titlepage p {
+        font-size: 16px;
+        padding: 0px 0 25px 0;
+    }
+    .titlepage h2 {
+        font-size: 32px;
+    }
+    .toggle_side_bar {
+        display: block;
+    }
+    .sidenav {
+        height: 100%;
+        width: 0;
+    }
+    .sidebar_page {
+        margin-left: 0;
+    }
+    .sidenav .closebtn {
+        display: block;
+    }
+    .main_section {
+        padding-left: 0px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .Our {
+        padding: 30px 0;
+    }
+    .text-bg h1 {
+        font-size: 77px;
+        line-height: 89px;
+    }
+    #myCarousel .carousel-indicators .active {
+        background: #ff7800;
+    }
+    .text-bg {
+        padding-left: 30px;
+        padding-bottom: 79px;
+    }
+    .padding_right {
+        padding-right: 15px;
+    }
+    .padding-left {
+        padding-left: 15px;
+    }
+    .padddd {
+        padding: 0;
+    }
+    .main_form,
+    .about .titlepage {
+        max-width: inherit;
+        margin: 30px 0;
+    }
+    #myCarousel .carousel-control-prev,
+    #myCarousel .carousel-control-next {
+        display: none;
+    }
+    .toggle_side_bar {
+        display: block;
+    }
+    .sidenav {
+        height: 100%;
+        width: 0;
+    }
+    .sidebar_page {
+        margin-left: 0;
+    }
+    .sidenav .closebtn {
+        display: block;
+    }
+    .main_section {
+        padding-left: 0px;
+    }
+}
+
+@media (max-width: 575px) {
+    #Our_slide .carousel-control-next i,
+    #Our_slide .carousel-control-prev i {
+        width: 49px;
+        height: 49px;
+    }
+    .titlepage h2 {
+        font-size: 32px;
+    }
+    .text-bg h1 {
+        font-size: 56px;
+        line-height: 69px;
+        padding-bottom: 25px;
+    }
+    .text-bg span {
+        font-size: 38px;
+    }
+    .text-bg .read_more {
+        padding: 6px 0px;
+        max-width: 128px;
+    }
+    .padding-left {
+        padding-left: 15px;
+    }
+    .Our {
+        padding: 35px 0;
+    }
+    .padding_right {
+        padding-right: 15px;
+    }
+    .main_form,
+    .about .titlepage {
+        max-width: inherit;
+        margin: 30px 0;
+    }
+    #myCarousel .carousel-control-prev,
+    #myCarousel .carousel-control-next {
+        display: none;
+    }
+    .toggle_side_bar {
+        display: block;
+    }
+    .sidenav {
+        height: 100%;
+        width: 0;
+    }
+    .sidebar_page {
+        margin-left: 0;
+    }
+    .sidenav .closebtn {
+        display: block;
+    }
+    .main_section {
+        padding-left: 0px;
+    }
+}
+
