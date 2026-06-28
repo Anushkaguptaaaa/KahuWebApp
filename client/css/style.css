@@ -43,6 +43,13 @@ html {
      scroll-behavior: smooth;
 }
 
+html,
+body {
+     margin: 0;
+     padding: 0;
+     overflow-x: hidden;
+}
+
 body {
      color: #666666;
      font-size: 14px;
@@ -378,16 +385,16 @@ button {
 
 .sidenav {
      width: 300px;
-     height: 138%;
+     height: 100%;
+     min-height: 100vh;
      position: absolute;
-     z-index: 1;
+     z-index: 9;
      top: 0;
      left: 0;
      background-color: #050304;
      overflow-x: hidden;
      transition: 0.5s;
      box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.15);
-     z-index: 9;
 }
 
 .sidenav .closebtn {
@@ -408,7 +415,98 @@ button {
 /** banner section **/
 
 .main_section {
-     padding-left: 300px;
+     position: relative;
+     height: 100vh;
+     max-height: 100vh;
+     width: 100%;
+     overflow: hidden;
+}
+
+.main_section > .container.padddd {
+     max-width: none;
+     width: 100%;
+     height: 100%;
+     padding: 0;
+     margin: 0;
+}
+
+@media (min-width: 1200px) {
+     .main_section > .container.padddd {
+          margin-left: 300px;
+          width: calc(100% - 300px);
+     }
+}
+
+.main_section > .container > .row {
+     height: 100%;
+     min-height: 100%;
+     margin: 0;
+}
+
+.main_section > .container > .row > [class*="col-"] {
+     padding: 0;
+     height: 100%;
+}
+
+.main_section .bg {
+     height: 100%;
+     width: 100%;
+     display: flex;
+     align-items: center;
+}
+
+.main_section .text-bg {
+     padding: 40px 30px 40px 40px;
+     width: 100%;
+}
+
+.main_section .text-bg span {
+     font-size: clamp(32px, 3.5vw, 62px);
+     display: block;
+     line-height: 1.1;
+}
+
+.main_section .text-bg h1 {
+     font-size: clamp(42px, 4.5vw, 80px);
+     line-height: 1.05;
+}
+
+.main_section #myCarousel,
+.main_section .carousel-inner,
+.main_section .carousel-item {
+     height: 100%;
+}
+
+.main_section .carousel-item .container {
+     max-width: none;
+     width: 100%;
+     padding: 0;
+     margin: 0;
+     height: 100%;
+}
+
+.main_section .images_box,
+.main_section .images_box figure {
+     height: 100%;
+     margin: 0;
+}
+
+.main_section .images_box figure img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     display: block;
+}
+
+.main_section #myCarousel .carousel-control-prev {
+     left: 15px;
+}
+
+.main_section #myCarousel .carousel-control-next {
+     right: 15px;
+     left: auto;
+     top: 50%;
+     transform: translateY(-50%);
 }
 
 .text-bg span {
@@ -454,6 +552,12 @@ button {
      padding: 5px 0;
      margin: 0 auto;
      display: block;
+}
+
+.top_btn .joey-btn {
+     max-width: 160px;
+     padding: 8px 0;
+     font-weight: 500;
 }
 
 .paoo {

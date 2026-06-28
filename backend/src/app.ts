@@ -12,16 +12,15 @@ dotenv.config();
 // Create Express app
 const app: Express = express();
 
-// CORS Configuration
-const corsOptions = {
-  origin: ['http://localhost:3000', 'http://localhost:5000'],
+// Enable CORS for local development
+app.use(cors({
+  origin: ['http://localhost:5001', 'http://localhost:3000', 'http://localhost:8080'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key'],
   credentials: true
-};
+}));
 
 // Middleware
-app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -31,8 +30,12 @@ if (!fs.existsSync(tmpDir)) {
   fs.mkdirSync(tmpDir, { recursive: true });
 }
 
-// Routes
+// API routes
 app.use('/api', uploadRoutes);
+
+// Serve the original static frontend from client/
+const clientPath = path.join(__dirname, '../../client');
+app.use(express.static(clientPath));
 
 // Error handling middleware (should be last)
 app.use(errorHandler);

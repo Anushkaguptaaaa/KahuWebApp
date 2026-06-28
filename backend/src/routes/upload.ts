@@ -7,7 +7,9 @@ import FormData from 'form-data';
 
 const router = express.Router();
 
-// Configure multer for file uploads
+const ROBOFLOW_BASE_URL = process.env.ROBOFLOW_BASE_URL || 'https://serverless.roboflow.com';
+const ROBOFLOW_MODEL = process.env.ROBOFLOW_MODEL || 'cat-breeds-2n7zk/2';
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.join(__dirname, '../../tmp'));
@@ -18,7 +20,6 @@ const storage = multer.diskStorage({
   },
 });
 
-// File filter to only accept image files
 const fileFilter = (req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
   if (file.mimetype.startsWith('image/')) {
     cb(null, true);
@@ -30,69 +31,75 @@ const fileFilter = (req: Request, file: Express.Multer.File, cb: multer.FileFilt
 const upload = multer({
   storage,
   fileFilter,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  limits: { fileSize: 5 * 1024 * 1024 },
 });
 
-// Upload image and detect breed
+function formatBreedName(className: string): string {
+  return className.replace(/_/g, ' ');
+}
+
+function deleteTempFile(filePath: string) {
+  fs.unlink(filePath, (err) => {
+    if (err) console.error('Error deleting file:', err);
+  });
+}
+
 router.post('/upload', upload.single('image'), async (req: Request, res: Response, next: NextFunction) => {
+  const filePath = req.file?.path;
+
   try {
-    if (!req.file) {
+    if (!req.file || !filePath) {
       return res.status(400).json({ success: false, error: 'No image file provided' });
     }
 
-    const filePath = req.file.path;
-    
-    // Create form data for Cat API
+    const apiKey = process.env.ROBOFLOW_API_KEY;
+    if (!apiKey) {
+      return res.status(500).json({
+        success: false,
+        error: 'Roboflow API key is not configured. Set ROBOFLOW_API_KEY in backend/.env',
+      });
+    }
+
     const formData = new FormData();
-    const fileStream = fs.createReadStream(filePath);
-    formData.append('file', fileStream, { filename: path.basename(filePath) });
-
-    // Send image to Cat API
-    const response = await axios.post('https://api.thecatapi.com/v1/images/upload', formData, {
-      headers: {
-        'x-api-key': process.env.CAT_API_KEY || '',
-        ...formData.getHeaders(),
-      },
+    formData.append('file', fs.createReadStream(filePath), {
+      filename: path.basename(filePath),
     });
 
-    // Delete the temporary file
-    fs.unlink(filePath, (err) => {
-      if (err) console.error('Error deleting file:', err);
+    const roboflowUrl = `${ROBOFLOW_BASE_URL}/${ROBOFLOW_MODEL}`;
+    const roboflowResponse = await axios.post(roboflowUrl, formData, {
+      params: { api_key: apiKey },
+      headers: formData.getHeaders(),
     });
 
-    // Check if breeds were detected
-    if (response.data && response.data.breeds && response.data.breeds.length > 0) {
-      return res.status(200).json({
-        success: true,
-        breeds: response.data.breeds,
-        imageUrl: response.data.url,
-      });
-    } else {
-      return res.status(200).json({
-        success: true,
-        breeds: [],
-        message: 'No cat breeds detected in the image',
-        imageUrl: response.data.url,
-      });
-    }
+    deleteTempFile(filePath);
+
+    const predictions = roboflowResponse.data.predictions || [];
+    const detectedBreeds = predictions
+      .sort((a: { confidence: number }, b: { confidence: number }) => b.confidence - a.confidence)
+      .map((prediction: { class: string; confidence: number }) => ({
+        name: formatBreedName(prediction.class),
+        confidence: prediction.confidence,
+      }));
+
+    return res.status(200).json({
+      success: true,
+      breeds: detectedBreeds,
+      message: detectedBreeds.length ? undefined : 'No cat breeds detected in the image',
+    });
   } catch (error: any) {
-    // Delete the temporary file if it exists
-    if (req.file && req.file.path) {
-      fs.unlink(req.file.path, (err) => {
-        if (err) console.error('Error deleting file:', err);
+    if (filePath) {
+      deleteTempFile(filePath);
+    }
+
+    if (error.response) {
+      const statusCode = error.response.status === 400 ? 400 : 502;
+      return res.status(statusCode).json({
+        success: false,
+        error: `Roboflow API error: ${error.response.data?.message || error.message}`,
       });
     }
 
-    // Handle different types of errors
-    if (error.response) {
-      // Cat API error
-      const statusCode = error.response.status === 400 ? 400 : 502;
-      error.statusCode = statusCode;
-      error.message = `Cat API Error: ${error.response.data.message || 'Unknown error'}`;
-    } else {
-      error.statusCode = 500;
-    }
-
+    error.statusCode = 500;
     next(error);
   }
 });

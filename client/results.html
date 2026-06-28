@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Breed Results — Kahu</title>
+   <link rel="icon" href="images/logo.png" type="image/png">
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+   <link rel="stylesheet" href="css/results.css">
+</head>
+<body class="results-page">
+   <header class="results-header">
+      <a href="index.html" class="results-logo">
+         <img src="images/logo.png" alt="Kahu">
+      </a>
+      <a href="index.html" class="results-back"><i class="fa fa-arrow-left"></i> Back to Home</a>
+   </header>
+
+   <main class="results-container" id="results-root">
+      <!-- populated by script -->
+   </main>
+
+   <script>
+      (function () {
+         var raw = sessionStorage.getItem('kahuUploadResult');
+         if (!raw) {
+            window.location.replace('index.html');
+            return;
+         }
+
+         var data;
+         try {
+            data = JSON.parse(raw);
+         } catch (e) {
+            window.location.replace('index.html');
+            return;
+         }
+
+         var root = document.getElementById('results-root');
+         var breeds = data.breeds || [];
+         var top = breeds[0];
+         var imageHtml = data.imageDataUrl
+            ? '<div class="results-image-card"><div class="results-image-wrap"><img src="' + data.imageDataUrl + '" alt="Your uploaded cat"></div></div>'
+            : '';
+
+         var resultHtml;
+         if (top) {
+            var confidencePct = top.confidence ? Math.round(top.confidence * 100) : null;
+            var altBreeds = breeds.slice(1);
+            var altHtml = '';
+            if (altBreeds.length) {
+               altHtml = '<div class="results-alt-breeds"><p class="results-alt-title">Other possibilities</p><div class="results-alt-list">' +
+                  altBreeds.map(function (b) {
+                     var pct = b.confidence ? Math.round(b.confidence * 100) + '%' : '';
+                     return '<span class="results-alt-chip">' + b.name + (pct ? ' · ' + pct : '') + '</span>';
+                  }).join('') + '</div></div>';
+            }
+
+            resultHtml =
+               '<div class="results-card">' +
+                  '<p class="results-label">Identified breed</p>' +
+                  '<h1 class="results-breed">' + top.name + '</h1>' +
+                  (confidencePct !== null
+                     ? '<p class="results-confidence"><strong>' + confidencePct + '%</strong> match confidence</p>'
+                     : '') +
+                  '<div class="results-actions">' +
+                     '<a href="index.html" class="results-btn results-btn-primary">Upload another</a>' +
+                     '<a href="gallery.html" class="results-btn results-btn-secondary">Browse breeds</a>' +
+                  '</div>' +
+                  altHtml +
+               '</div>';
+         } else {
+            resultHtml =
+               '<div class="results-card">' +
+                  '<p class="results-empty">' + (data.message || 'No cat breed could be identified in this image.') + '</p>' +
+                  '<div class="results-actions" style="margin-top:24px">' +
+                     '<a href="index.html" class="results-btn results-btn-primary">Try another photo</a>' +
+                  '</div>' +
+               '</div>';
+         }
+
+         root.innerHTML = imageHtml + resultHtml;
+      })();
+   </script>
+</body>
+</html>

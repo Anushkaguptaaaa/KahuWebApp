@@ -6,25 +6,23 @@ Kahu is a web application that allows users to upload images of cats and get inf
 
 This is a monorepo containing:
 
-- `client/`: Static HTML/CSS/JS frontend (not actively used)
-- `frontend/`: React/TypeScript frontend application
-- `backend/`: Node.js/Express/TypeScript backend API
+- `client/`: Static HTML/CSS/JS frontend
+- `backend/`: Node.js/Express/TypeScript backend API (also serves the frontend)
 
 ## Features
 
 - Upload cat images for breed detection
 - View detailed information about detected cat breeds
 - Responsive design for mobile and desktop
-- User authentication (login/signup)
+- User authentication pages (login/signup)
 - Gallery of cat breeds
 
 ## Tech Stack
 
 ### Frontend
-- React
-- TypeScript
-- Axios for API calls
-- React Router for navigation
+- HTML, CSS, JavaScript
+- Bootstrap
+- jQuery
 
 ### Backend
 - Node.js
@@ -52,33 +50,18 @@ This is a monorepo containing:
 
 3. Create a `.env` file in the backend directory with the following variables:
    ```
-   PORT=5000
+   PORT=5001
    CAT_API_KEY=your_cat_api_key_here
    ```
    You can get a Cat API key from [https://thecatapi.com/](https://thecatapi.com/)
+
+   Note: macOS uses port 5000 for AirPlay Receiver, so the app defaults to port 5001.
 
 4. Start the development server:
    ```
    npm run dev
    ```
-   The backend server will run on http://localhost:5000
-
-### Frontend Setup
-1. Navigate to the frontend directory:
-   ```
-   cd frontend
-   ```
-
-2. Install dependencies:
-   ```
-   npm install
-   ```
-
-3. Start the development server:
-   ```
-   npm start
-   ```
-   The frontend application will run on http://localhost:3000
+   Open http://localhost:5001 in your browser. The backend serves both the API and the static frontend.
 
 ## API Endpoints
 

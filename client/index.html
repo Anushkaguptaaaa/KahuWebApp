@@ -18,6 +18,7 @@
       <link rel="stylesheet" href="css/style.css">
       <!-- Responsive-->
       <link rel="stylesheet" href="css/responsive.css">
+      <link rel="stylesheet" href="css/results.css">
       <!-- fevicon -->
       <link rel="icon" href="images/logo.png" sizes="90000x90000" type="image/png" />
       <!-- Scrollbar Custom CSS -->
@@ -46,33 +47,29 @@
       <!-- end header inner -->
       <!-- end header -->
       <!-- banner -->
-      <span class="toggle_side_bar" onClick="openNav1()"><i class="fa fa-bars"></i></span>
-      <div id="side_bar" class="sidenav">
-         <div class="side_bar_logo">
-            <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="#"></a> </div>
-         </div>
-         <a href="javascript:void(0)" class="closebtn" onClick="closeNav1()">X</a>
-         <div class="scoll_to_id_menu">
-            <nav class="nav">
-               <div class="padded">
-                  <ul>
-                     <li class="active"><a class="nav-section1" href="index.html">Home</a></li>
-                     <li><a class="nav-section2" href="about_page.html">About </a></li>
-                     <li><a class="nav-section2" href="gallery.html">Gallery</a></li>
-                     <li><a class="nav-section2" href="contact.html">contact </a></li>
-                     
-                     
-                  
-                  </ul>
-                  <div class="top_btn">
-                     <a class="read_more" href="login.html">Login</a>
-                     <a class="read_more paoo" href="signup.html">Signup</a>
-                  </div>
-               </div>
-            </nav>
-         </div>
-      </div>
       <div class="main_section">
+         <span class="toggle_side_bar" onClick="openNav1()"><i class="fa fa-bars"></i></span>
+         <div id="side_bar" class="sidenav">
+            <div class="side_bar_logo">
+               <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="#"></a> </div>
+            </div>
+            <a href="javascript:void(0)" class="closebtn" onClick="closeNav1()">X</a>
+            <div class="scoll_to_id_menu">
+               <nav class="nav">
+                  <div class="padded">
+                     <ul>
+                        <li class="active"><a class="nav-section1" href="index.html">Home</a></li>
+                        <li><a class="nav-section2" href="about_page.html">About </a></li>
+                        <li><a class="nav-section2" href="gallery.html">Gallery</a></li>
+                        <li><a class="nav-section2" href="contact.html">contact </a></li>
+                     </ul>
+                     <div class="top_btn">
+                        <a class="read_more joe-btn" href="#">Ask Joe!</a>
+                     </div>
+                  </div>
+               </nav>
+            </div>
+         </div>
          <div class="container padddd">
             <div class="row">
                <div class="col-md-6 padding_lrtb0">
@@ -83,7 +80,8 @@
                         <h1> KAHU! </h1>
                         <p>Discover the world of cat breeds with Kahu. Our easy-to-use platform helps you identify and learn about various cat breeds through detailed information and stunning images. Join us and explore the unique charm of each feline breed</p>
                         <a class="read_more" href="#" id="upload-link">Upload image</a>
-                        <input type="file" id="upload-input" style="display: none;">
+                        <input type="file" id="upload-input" accept="image/*" style="display: none;">
+                        <div id="upload-status"></div>
                     </div>                    
                   </div>
                </div>
@@ -332,20 +330,93 @@
          }, 30000);
       </script>
       <script>
+         function openNav1() {
+            document.getElementById('side_bar').style.width = '300px';
+         }
+
+         function closeNav1() {
+            document.getElementById('side_bar').style.width = '0';
+         }
+
          document.getElementById('upload-link').addEventListener('click', function(e) {
-    e.preventDefault();
-    document.getElementById('upload-input').click();
-});
+            e.preventDefault();
+            document.getElementById('upload-input').click();
+         });
 
-document.getElementById('upload-input').addEventListener('change', function() {
-    var file = this.files[0];
-    if (file) {
-        // You can add your file upload logic here
-        console.log('File selected:', file.name);
-        // For example, you can upload the file using AJAX or FormData API
-    }
-});
+         function compressImageForStorage(dataUrl, maxSize) {
+            maxSize = maxSize || 1200;
+            return new Promise(function(resolve) {
+               var img = new Image();
+               img.onload = function() {
+                  var w = img.width;
+                  var h = img.height;
+                  if (w > maxSize || h > maxSize) {
+                     if (w > h) {
+                        h = Math.round(h * maxSize / w);
+                        w = maxSize;
+                     } else {
+                        w = Math.round(w * maxSize / h);
+                        h = maxSize;
+                     }
+                  }
+                  var canvas = document.createElement('canvas');
+                  canvas.width = w;
+                  canvas.height = h;
+                  canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+                  resolve(canvas.toDataURL('image/jpeg', 0.85));
+               };
+               img.onerror = function() { resolve(dataUrl); };
+               img.src = dataUrl;
+            });
+         }
 
+         document.getElementById('upload-input').addEventListener('change', async function() {
+            var file = this.files[0];
+            if (!file) return;
+
+            var statusEl = document.getElementById('upload-status');
+            var uploadLink = document.getElementById('upload-link');
+            uploadLink.classList.add('upload-link-disabled');
+            statusEl.innerHTML = '<span class="upload-loading">Analyzing your cat...</span>';
+
+            var imageDataUrl = await new Promise(function(resolve, reject) {
+               var reader = new FileReader();
+               reader.onload = function() { resolve(reader.result); };
+               reader.onerror = reject;
+               reader.readAsDataURL(file);
+            });
+
+            imageDataUrl = await compressImageForStorage(imageDataUrl);
+
+            var formData = new FormData();
+            formData.append('image', file);
+
+            try {
+               var response = await fetch('/api/upload', {
+                  method: 'POST',
+                  body: formData
+               });
+               var data = await response.json();
+
+               if (!response.ok || !data.success) {
+                  throw new Error(data.error || 'Upload failed');
+               }
+
+               sessionStorage.setItem('kahuUploadResult', JSON.stringify({
+                  imageDataUrl: imageDataUrl,
+                  breeds: data.breeds || [],
+                  message: data.message
+               }));
+
+               window.location.href = 'results.html';
+            } catch (error) {
+               uploadLink.classList.remove('upload-link-disabled');
+               statusEl.innerHTML = '<span style="color:#ffcccc;margin-top:12px;display:block;font-size:14px;">' +
+                  (error.message || 'Something went wrong. Please try again.') + '</span>';
+            }
+
+            this.value = '';
+         });
       </script>
    </body>
 </html>

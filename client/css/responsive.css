@@ -36,6 +36,11 @@
     .images_box figure img {
         height: 683px;
     }
+    .main_section .images_box figure img {
+        height: 100vh;
+        min-height: 100vh;
+        object-fit: cover;
+    }
     .padddd {
         padding: 0;
     }
@@ -65,6 +70,11 @@
     }
     .images_box figure img {
         height: 683px;
+    }
+    .main_section .images_box figure img {
+        height: 100vh;
+        min-height: 100vh;
+        object-fit: cover;
     }
     .text-bg span {
         font-size: 43px;
@@ -210,6 +220,35 @@
     }
     .main_section {
         padding-left: 0px;
+    }
+}
+
+@media (max-width: 991px) {
+    .main_section {
+        height: auto;
+        max-height: none;
+        min-height: 100vh;
+    }
+
+    .main_section > .container > .row {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .main_section > .container > .row > [class*="col-"] {
+        flex: 0 0 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .main_section .bg {
+        min-height: 60vh;
+        height: auto;
+    }
+
+    .main_section .images_box figure img {
+        height: 60vh;
+        min-height: 60vh;
     }
 }
 
