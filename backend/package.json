@@ -13,6 +13,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@google/genai": "^2.10.0",
     "@types/form-data": "^2.2.1",
     "axios": "^1.11.0",
     "cors": "^2.8.5",

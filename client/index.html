@@ -1,424 +1,62 @@
-<!DOCTYPE>
-<html>
+<!DOCTYPE html>
+<html lang="en">
    <head>
-      <!-- basic -->
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <!-- mobile metas -->
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-      <!-- site metas -->
       <title>Kahu</title>
-      <meta name="keywords" content="">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <!-- bootstrap css -->
+      <meta name="description" content="Discover your cat's breed with Kahu">
       <link rel="stylesheet" href="css/bootstrap.min.css">
-      <!-- style css -->
       <link rel="stylesheet" href="css/style.css">
-      <!-- Responsive-->
       <link rel="stylesheet" href="css/responsive.css">
       <link rel="stylesheet" href="css/results.css">
-      <!-- fevicon -->
-      <link rel="icon" href="images/logo.png" sizes="90000x90000" type="image/png" />
-      <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+      <link rel="stylesheet" href="css/joey-chat.css">
+      <link rel="stylesheet" href="css/memory-game.css">
+      <link rel="stylesheet" href="css/coquette-pages.css">
+      <link rel="stylesheet" href="css/home-coquette.css">
+      <link rel="icon" href="images/logo.png" type="image/png">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-      <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-      <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
    </head>
-   <!-- body -->
    <body class="main-layout">
-      <!-- loader  -->
       <div class="loader_bg" id="loader_bg">
-         <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+         <div class="loader"><img src="images/loading.gif" alt="Loading"></div>
       </div>
-      <!-- end loader -->
-      <!-- header -->
-      <header>
-         <!-- header inner -->
-         <div class="header">
+
+      <div id="app"></div>
+
+      <div id="joey-chat" class="joey-chat joey-chat--hidden" aria-hidden="true">
+         <div class="joey-chat__header">
+            <img src="images/logo.png" alt="" class="joey-chat__avatar">
+            <span class="joey-chat__title">Hey its Joe!</span>
+            <button type="button" class="joey-chat__close" id="joey-chat-close" aria-label="Close chat">&times;</button>
          </div>
-      </header>
-      <!-- end header inner -->
-      <!-- end header -->
-      <!-- banner -->
-      <div class="main_section">
-         <span class="toggle_side_bar" onClick="openNav1()"><i class="fa fa-bars"></i></span>
-         <div id="side_bar" class="sidenav">
-            <div class="side_bar_logo">
-               <div class="logo"> <a href="index.html"><img src="images/logo.png" alt="#"></a> </div>
-            </div>
-            <a href="javascript:void(0)" class="closebtn" onClick="closeNav1()">X</a>
-            <div class="scoll_to_id_menu">
-               <nav class="nav">
-                  <div class="padded">
-                     <ul>
-                        <li class="active"><a class="nav-section1" href="index.html">Home</a></li>
-                        <li><a class="nav-section2" href="about_page.html">About </a></li>
-                        <li><a class="nav-section2" href="gallery.html">Gallery</a></li>
-                        <li><a class="nav-section2" href="contact.html">contact </a></li>
-                     </ul>
-                     <div class="top_btn">
-                        <a class="read_more joe-btn" href="#">Ask Joe!</a>
-                     </div>
-                  </div>
-               </nav>
+         <div class="joey-chat__messages" id="joey-messages">
+            <div class="joey-chat__bubble joey-chat__bubble--bot">
+               Hi! I'm Joe 👋 Ask me anything about cats, cat care, or veterinary health. I'm here to help.
             </div>
          </div>
-         <div class="container padddd">
-            <div class="row">
-               <div class="col-md-6 padding_lrtb0">
-                  <div class="bg">
-                     <div class="text-bg">
-                        <span>WELCOME </span>
-                        <span>TO </span>
-                        <h1> KAHU! </h1>
-                        <p>Discover the world of cat breeds with Kahu. Our easy-to-use platform helps you identify and learn about various cat breeds through detailed information and stunning images. Join us and explore the unique charm of each feline breed</p>
-                        <a class="read_more" href="#" id="upload-link">Upload image</a>
-                        <input type="file" id="upload-input" accept="image/*" style="display: none;">
-                        <div id="upload-status"></div>
-                    </div>                    
-                  </div>
-               </div>
-               <div class="col-md-6 padding_lrtb0">
-                  <div id="myCarousel" class="carousel slide banner_main" data-ride="carousel">
-                     <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1"></li>
-                        <li data-target="#myCarousel" data-slide-to="2"></li>
-                     </ol>
-                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                           <div class="container padding_lrtb0">
-                              <div class="carousel-caption">
-                                 <div class="images_box">
-                                    <figure><img src="images/babber_box.jpg"></figure>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="carousel-item">
-                           <div class="container padding_lrtb0">
-                              <div class="carousel-caption">
-                                 <div class="images_box">
-                                    <figure><img src="images/img3.jpg"></figure>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="carousel-item">
-                           <div class="container padding_lrtb0">
-                              <div class="carousel-caption ">
-                                 <div class="images_box">
-                                    <figure><img src="images/img2.jpg"></figure>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                     <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                     </a>
-                     <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                     </a>
-                  </div>
-               </div>
-            </div>
-         </div>
+         <form class="joey-chat__input-row" id="joey-form">
+            <input type="text" id="joey-input" placeholder="Ask about cats, breeds, or vet care..." autocomplete="off">
+            <button type="submit" id="joey-send">Send</button>
+         </form>
       </div>
-      <!-- end banner -->
-      <!-- about -->
-      <div id="about"  class="about">
-         <div class="container-fluid">
-            <div class="row d_flex">
-               <div class="col-md-7 padding-left">
-                  <div class="about_img">
-                     <figure><img src="images/about_img.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-5">
-                  <div class="titlepage">
-                     <h2>About Kahu</h2>
-                     <p>Our cutting-edge Cat Breed Identifier app combines a user-friendly interface with accurate identification capabilities to determine cat breeds from images. Simply upload a photo of a cat, and the app swiftly analyzes key features to provide you with precise breed information. Ideal for cat enthusiasts, breeders, and veterinarians, our app offers a smooth and efficient solution for identifying various cat breeds, enhancing your feline knowledge and care experience.</p>
-                     <a class=read_more href ="about_page.html">Read More</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end about -->
-      <!-- Our -->
-      <div class="Our">
-         <div class="container">
-            <div class="row d_flex">
-               <div class="col-md-4">
-                  <div class="titlepage">
-                     <h2>Our Cats</h2>
-                     <p>Discover a wide range of cat breeds on our website, from the sleek Siamese to the fluffy Maine Coon. Each breed profile provides key details on physical traits, personality, and care needs, helping you find the perfect feline companion. Whether you're a seasoned cat lover or new to owning a cat, our site offers concise, informative descriptions to guide you.</p>
-                     <a class="read_more" href="#">See More</a>
-                  </div>
-               </div>
-               <div class="col-md-8">
-                  <div id="Our_slide" class="carousel slide Our_banner" data-ride="carousel">
-                     <ol class="carousel-indicators">
-                        <li data-target="#Our_slide" data-slide-to="0" class="active"></li>
-                        <li data-target="#Our_slide" data-slide-to="1"></li>
-                        <li data-target="#Our_slide" data-slide-to="2"></li>
-                     </ol>
-                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                           <div class="container">
-                              <div class="carousel-caption relative">
-                                 <figure><img src="images/dog.jpg" alt="#"/></figure>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="carousel-item">
-                           <div class="container">
-                              <div class="carousel-caption relative">
-                                 <figure><img src="images/catt.jpg" alt="#"/></figure>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="carousel-item">
-                           <div class="container">
-                              <div class="carousel-caption relative">
-                                 <figure><img src="images/catto.jpg" alt="#"/></figure>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <a class="carousel-control-prev" href="#Our_slide" role="button" data-slide="prev">
-                     <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                     </a>
-                     <a class="carousel-control-next" href="#Our_slide" role="button" data-slide="next">
-                     <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                     </a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end Our -->
-      <!-- offers -->
-      <div class="offers">
-         <div class="container-fluid">
-            <div class="row d_flex">
-               <div class="col-md-6">
-                  <div class="titlepage">
-                     <h2>Offers Pets</h2>
-                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, and</p>
-                     <a class="read_more" href="#">See More</a>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="offers_img">
-                     <figure><img src="images/offeres_img.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end offers -->
-      <!-- blog -->
-      <div class="blog">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2>Our Blog</h2>
-                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, and</p>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-4">
-                  <div class="blog_box">
-                     <div class="blog_img">
-                        <figure><img src="images/blog1.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="blog_room">
-                        <h3>We import</h3>
-                        <span>It is a long established fact that a reader will be distracted by the readable</span>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, and </p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="blog_box">
-                     <div class="blog_img">
-                        <figure><img src="images/blog2.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="blog_room">
-                        <h3>We import</h3>
-                        <span>It is a long established fact that a reader will be distracted by the readable</span>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, and </p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="blog_box">
-                     <div class="blog_img">
-                        <figure><img src="images/blog3.jpg" alt="#"/></figure>
-                     </div>
-                     <div class="blog_room">
-                        <h3>We import</h3>
-                        <span>It is a long established fact that a reader will be distracted by the readable</span>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, and </p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- end blog -->
-      <!-- footer -->
-      <footer>
-         <div class="footer">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-4">
-                     <div class="titlepage">
-                        <h2>Contact Us</h2>
-                        <ul class="location_icon">
-                           <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a> Location</li>
-                           <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>demo@gmail.com</li>
-                           <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i></a> (+71) 9876543109</li>
-                        </ul>
-                     </div>
-                  </div>
-                  <div class="col-md-8">
-                     <div class="titlepage">
-                        <h2>Newsletter</h2>
-                        <form class="form_subscri">
-                           <input class="newsl" placeholder="Enter Your Email" type="text" name="Enter Your Email">
-                           <button class="subsci_btn">Subscribe</button>
-                        </form>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="copyright">
-               <div class="container">
-                  <p>Copyright © 2021 Design by <a href="https://html.design/">Free HTML Templates</a></p>
-               </div>
-            </div>
-         </div>
-      </footer>
-      <!-- end footer -->
-      <!-- Javascript files-->
+
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
       <script src="js/jquery-3.0.0.min.js"></script>
       <script src="js/plugin.js"></script>
-      <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
+      <script src="js/memory-game.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-      <!-- Hide loader after 20 seconds -->
-      <script>
-         setTimeout(function() {
-             document.getElementById('loader_bg').style.display = 'none';
-         }, 30000);
-      </script>
-      <script>
-         function openNav1() {
-            document.getElementById('side_bar').style.width = '300px';
-         }
-
-         function closeNav1() {
-            document.getElementById('side_bar').style.width = '0';
-         }
-
-         document.getElementById('upload-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('upload-input').click();
-         });
-
-         function compressImageForStorage(dataUrl, maxSize) {
-            maxSize = maxSize || 1200;
-            return new Promise(function(resolve) {
-               var img = new Image();
-               img.onload = function() {
-                  var w = img.width;
-                  var h = img.height;
-                  if (w > maxSize || h > maxSize) {
-                     if (w > h) {
-                        h = Math.round(h * maxSize / w);
-                        w = maxSize;
-                     } else {
-                        w = Math.round(w * maxSize / h);
-                        h = maxSize;
-                     }
-                  }
-                  var canvas = document.createElement('canvas');
-                  canvas.width = w;
-                  canvas.height = h;
-                  canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-                  resolve(canvas.toDataURL('image/jpeg', 0.85));
-               };
-               img.onerror = function() { resolve(dataUrl); };
-               img.src = dataUrl;
-            });
-         }
-
-         document.getElementById('upload-input').addEventListener('change', async function() {
-            var file = this.files[0];
-            if (!file) return;
-
-            var statusEl = document.getElementById('upload-status');
-            var uploadLink = document.getElementById('upload-link');
-            uploadLink.classList.add('upload-link-disabled');
-            statusEl.innerHTML = '<span class="upload-loading">Analyzing your cat...</span>';
-
-            var imageDataUrl = await new Promise(function(resolve, reject) {
-               var reader = new FileReader();
-               reader.onload = function() { resolve(reader.result); };
-               reader.onerror = reject;
-               reader.readAsDataURL(file);
-            });
-
-            imageDataUrl = await compressImageForStorage(imageDataUrl);
-
-            var formData = new FormData();
-            formData.append('image', file);
-
-            try {
-               var response = await fetch('/api/upload', {
-                  method: 'POST',
-                  body: formData
-               });
-               var data = await response.json();
-
-               if (!response.ok || !data.success) {
-                  throw new Error(data.error || 'Upload failed');
-               }
-
-               sessionStorage.setItem('kahuUploadResult', JSON.stringify({
-                  imageDataUrl: imageDataUrl,
-                  breeds: data.breeds || [],
-                  message: data.message
-               }));
-
-               window.location.href = 'results.html';
-            } catch (error) {
-               uploadLink.classList.remove('upload-link-disabled');
-               statusEl.innerHTML = '<span style="color:#ffcccc;margin-top:12px;display:block;font-size:14px;">' +
-                  (error.message || 'Something went wrong. Please try again.') + '</span>';
-            }
-
-            this.value = '';
-         });
-      </script>
+      <script type="module" src="js/app.js"></script>
    </body>
 </html>
-
-

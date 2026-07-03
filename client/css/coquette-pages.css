@@ -1,0 +1,249 @@
+/* Shared coquette page theme (gallery, about, contact) */
+
+body.coquette-page {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff5f7;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body.coquette-page::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url('../images/bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+}
+
+.coquette-page .heading-container {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 228, 235, 0.88) 0%,
+        rgba(255, 240, 245, 0.82) 50%,
+        rgba(252, 231, 243, 0.88) 100%
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 48px 24px;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 182, 193, 0.45);
+    box-shadow: 0 8px 32px rgba(219, 112, 147, 0.12);
+}
+
+.coquette-page .heading-container::before,
+.coquette-page .heading-container::after {
+    content: '♡';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    color: rgba(199, 93, 122, 0.55);
+}
+
+.coquette-page .heading-container::before { left: 24px; }
+.coquette-page .heading-container::after { right: 24px; }
+
+.coquette-page h3 {
+    font-family: 'Cormorant Garamond', serif;
+    color: #8b3a52;
+    margin: 0;
+    font-size: clamp(1.75rem, 4vw, 2.4rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    font-style: italic;
+}
+
+.coquette-page .paragraph-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 28px auto;
+    padding: 28px 32px 32px;
+    background: linear-gradient(
+        145deg,
+        rgba(255, 250, 252, 0.92) 0%,
+        rgba(255, 245, 248, 0.88) 100%
+    );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: #5c3d47;
+    box-shadow:
+        0 4px 24px rgba(219, 112, 147, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 182, 193, 0.55);
+    position: relative;
+}
+
+.coquette-page .paragraph-container::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, transparent, #e8a0b4, transparent);
+}
+
+.coquette-page .paragraph-container h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.65rem;
+    font-weight: 600;
+    margin: 16px 0 18px;
+    color: #9e4a63;
+}
+
+.coquette-page .paragraph-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    border: 2px solid rgba(255, 182, 193, 0.35);
+    box-shadow: 0 6px 20px rgba(199, 93, 122, 0.12);
+}
+
+.coquette-page p {
+    margin-bottom: 14px;
+    line-height: 1.75;
+    font-size: 1.05em;
+    color: #6b4a54;
+    text-shadow: none;
+}
+
+.coquette-page .paragraph-container p:first-of-type {
+    font-weight: 500;
+}
+
+.coquette-page a {
+    color: #b85c75;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184, 92, 117, 0.35);
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.coquette-page a:hover {
+    color: #d4788f;
+    border-bottom-color: #d4788f;
+}
+
+.coquette-page .inspiration-container,
+.coquette-page .bottom-container {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 228, 235, 0.88) 0%,
+        rgba(252, 231, 243, 0.88) 100%
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 24px;
+    margin: 28px auto;
+    width: calc(100% - 32px);
+    max-width: 900px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 182, 193, 0.55);
+    box-shadow: 0 4px 24px rgba(219, 112, 147, 0.14);
+    text-align: center;
+}
+
+.coquette-page .inspiration-container h3,
+.coquette-page .bottom-container h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.coquette-page .slider {
+    width: calc(100% - 32px);
+    max-width: 900px;
+    margin: 28px auto;
+    padding: 20px;
+    background: linear-gradient(
+        145deg,
+        rgba(255, 250, 252, 0.92) 0%,
+        rgba(255, 245, 248, 0.88) 100%
+    );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 182, 193, 0.55);
+    box-shadow: 0 4px 24px rgba(219, 112, 147, 0.14);
+    height: auto;
+    min-height: 200px;
+    overflow: hidden;
+}
+
+.coquette-page .slides {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.coquette-page .slide {
+    flex: 1;
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.coquette-page .slide img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    border: 2px solid rgba(255, 182, 193, 0.35);
+    box-shadow: 0 6px 20px rgba(199, 93, 122, 0.12);
+}
+
+.coquette-page .paragraph-container--center {
+    text-align: center;
+}
+
+.coquette-page .button-container {
+    margin-top: 20px;
+}
+
+.coquette-page .social-button {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    border-bottom: none;
+}
+
+.coquette-page .social-button img {
+    width: 100%;
+    height: auto;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.coquette-page .social-button:hover img {
+    filter: brightness(0) saturate(100%) invert(52%) sepia(18%) saturate(1200%) hue-rotate(298deg) brightness(95%) contrast(88%);
+}
+
+@media (max-width: 600px) {
+    .coquette-page .heading-container::before,
+    .coquette-page .heading-container::after {
+        display: none;
+    }
+
+    .coquette-page .paragraph-container,
+    .coquette-page .slider,
+    .coquette-page .inspiration-container,
+    .coquette-page .bottom-container {
+        margin-left: 16px;
+        margin-right: 16px;
+        width: auto;
+        padding: 24px 20px;
+    }
+}
