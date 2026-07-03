@@ -1,0 +1,26 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd backend && npm install && npm run build",
+  "installCommand": "npm install",
+  "outputDirectory": "client",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" },
+    {
+      "source": "/((?!api/|css/|js/|images/|fonts/).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/about_page.html", "destination": "/about", "permanent": true },
+    { "source": "/gallery.html", "destination": "/gallery", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact", "permanent": true },
+    { "source": "/results.html", "destination": "/results", "permanent": true }
+  ],
+  "functions": {
+    "api/index.ts": {
+      "includeFiles": "backend/dist/**",
+      "maxDuration": 30
+    }
+  }
+}

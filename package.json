@@ -1,0 +1,22 @@
+{
+  "name": "kahu-web-app",
+  "private": true,
+  "scripts": {
+    "build": "cd backend && npm install && npm run build",
+    "dev": "cd backend && npm run dev"
+  },
+  "dependencies": {
+    "@google/genai": "^2.10.0",
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "form-data": "^4.0.4",
+    "multer": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^24.3.0",
+    "typescript": "^5.9.2"
+  }
+}
