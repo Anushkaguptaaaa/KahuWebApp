@@ -366,6 +366,92 @@ body.coquette-home {
     color: var(--dusty-rose-muted);
 }
 
+/* N-Queens section */
+.coquette-home .nqueens-section {
+    background: var(--dusty-rose-tint);
+    padding: 75px 0 90px;
+}
+
+.coquette-home .nqueens-section__intro h2 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--dusty-rose-text);
+    font-style: italic;
+}
+
+.coquette-home .nqueens-section__intro p {
+    color: var(--dusty-rose-muted);
+}
+
+.coquette-home .nqueens-diff-btn {
+    border-color: rgba(196, 150, 161, 0.45);
+    background: #fff;
+    color: var(--dusty-rose-text);
+}
+
+.coquette-home .nqueens-diff-btn:hover {
+    border-color: var(--dusty-rose);
+}
+
+.coquette-home .nqueens-diff-btn.is-active {
+    background: var(--dusty-rose);
+    border-color: var(--dusty-rose);
+    color: #fff;
+}
+
+.coquette-home .nqueens-stats--inline .nqueens-stat {
+    background: #fff;
+    border: 1px solid rgba(196, 150, 161, 0.45);
+    box-shadow: 0 4px 16px rgba(196, 150, 161, 0.08);
+}
+
+.coquette-home .nqueens-stats--inline .nqueens-stat span {
+    color: var(--dusty-rose);
+}
+
+.coquette-home .nqueens-stats--inline .nqueens-stat strong {
+    color: var(--dusty-rose-text);
+}
+
+.coquette-home .nqueens-board {
+    border-color: rgba(196, 150, 161, 0.45);
+    box-shadow: 0 8px 28px rgba(196, 150, 161, 0.15);
+}
+
+.coquette-home .nqueens-cell--light {
+    background: #fff7e6;
+}
+
+.coquette-home .nqueens-cell--dark {
+    background: rgba(196, 150, 161, 0.35);
+}
+
+.coquette-home .nqueens-cell.is-attacked:not(.has-queen) {
+    box-shadow: inset 0 0 0 999px rgba(179, 58, 74, 0.12);
+}
+
+.coquette-home .nqueens-btn--dark {
+    background: var(--dusty-rose);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(196, 150, 161, 0.25);
+}
+
+.coquette-home .nqueens-btn--dark:hover {
+    background: var(--dusty-rose-hover);
+    color: #fff;
+}
+
+.coquette-home .nqueens-win--overlay {
+    background: rgba(255, 247, 230, 0.82);
+}
+
+.coquette-home .nqueens-win__title {
+    color: var(--dusty-rose-text);
+}
+
+.coquette-home .nqueens-win__sub {
+    color: var(--dusty-rose-muted);
+}
+
 /* Footer */
 .coquette-home .footer {
     background: var(--dusty-rose);

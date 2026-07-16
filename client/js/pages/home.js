@@ -199,6 +199,44 @@ export function renderHome(container, { navigate, setActiveNav }) {
             </div>
          </div>
       </div>
+      <div class="nqueens-section" id="n-queens-game">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage nqueens-section__intro">
+                     <h2>N-Queens Puzzle</h2>
+                     <p>Place queens so none share a row, column, or diagonal. Pick a difficulty and crown the board!</p>
+                  </div>
+               </div>
+            </div>
+            <div class="nqueens-difficulty" role="group" aria-label="Difficulty">
+               <button type="button" class="nqueens-diff-btn is-active" data-nqueens-difficulty="easy" aria-pressed="true">Easy · 4×4</button>
+               <button type="button" class="nqueens-diff-btn" data-nqueens-difficulty="medium" aria-pressed="false">Medium · 6×6</button>
+               <button type="button" class="nqueens-diff-btn" data-nqueens-difficulty="hard" aria-pressed="false">Hard · 8×8</button>
+            </div>
+            <div class="nqueens-stats nqueens-stats--inline">
+               <div class="nqueens-stat">
+                  <span>Queens</span>
+                  <strong id="nqueens-placed">0 / 4</strong>
+               </div>
+               <div class="nqueens-stat">
+                  <span>Status</span>
+                  <strong id="nqueens-status">Place 4 queens</strong>
+               </div>
+            </div>
+            <div class="nqueens-board-wrap">
+               <div class="nqueens-board" id="nqueens-board" data-size="4"></div>
+               <div class="nqueens-win nqueens-win--overlay" id="nqueens-win">
+                  <h3 class="nqueens-win__title">Puzzle solved!</h3>
+                  <p class="nqueens-win__sub">Every queen is safe — nice work.</p>
+                  <button type="button" class="nqueens-btn nqueens-btn--dark" id="nqueens-play-again">Play again</button>
+               </div>
+            </div>
+            <div class="nqueens-actions">
+               <button type="button" class="nqueens-btn nqueens-btn--dark" id="nqueens-restart">Clear board</button>
+            </div>
+         </div>
+      </div>
       <footer>
          <div class="footer">
             <div class="container">
@@ -234,6 +272,10 @@ export function renderHome(container, { navigate, setActiveNav }) {
 
   if (window.initMemoryGame) {
     window.initMemoryGame();
+  }
+
+  if (window.initNQueensGame) {
+    window.initNQueensGame();
   }
 
   if (window.jQuery) {
