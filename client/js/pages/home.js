@@ -46,7 +46,7 @@ export function renderHome(container, { navigate, setActiveNav }) {
                   </div>
                </div>
                <div class="col-md-6 padding_lrtb0">
-                  <div id="myCarousel" class="carousel slide banner_main" data-interval="3000">
+                  <div id="myCarousel" class="carousel slide banner_main" data-interval="1800">
                      <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -116,7 +116,7 @@ export function renderHome(container, { navigate, setActiveNav }) {
                   </div>
                </div>
                <div class="col-md-8">
-                  <div id="Our_slide" class="carousel slide Our_banner" data-interval="3000">
+                  <div id="Our_slide" class="carousel slide Our_banner" data-interval="1800">
                      <ol class="carousel-indicators">
                         <li data-target="#Our_slide" data-slide-to="0" class="active"></li>
                         <li data-target="#Our_slide" data-slide-to="1"></li>
@@ -280,12 +280,12 @@ export function renderHome(container, { navigate, setActiveNav }) {
 
   if (window.jQuery) {
     window.jQuery('#myCarousel').carousel({
-      interval: 3000,
+      interval: 1800,
       pause: 'hover',
       wrap: true,
     });
     window.jQuery('#Our_slide').carousel({
-      interval: 3000,
+      interval: 1800,
       pause: 'hover',
       wrap: true,
     });

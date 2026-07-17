@@ -291,8 +291,9 @@
 
 @media (max-width: 520px) {
     .memory-board {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 5px;
+        width: 100%;
     }
 }
 

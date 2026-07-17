@@ -138,6 +138,17 @@ body.coquette-home {
     }
 }
 
+@media (max-width: 767px) {
+    .coquette-home .about > .container-fluid > .row > .col-md-5 {
+        order: 1;
+    }
+
+    .coquette-home .about > .container-fluid > .row > .col-md-7,
+    .coquette-home .about > .container-fluid > .row > .padding-left {
+        order: 2;
+    }
+}
+
 .coquette-home .about > .container-fluid {
     width: 100%;
     max-width: none;

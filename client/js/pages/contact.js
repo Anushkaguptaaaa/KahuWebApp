@@ -1,6 +1,7 @@
 export function renderContact(container) {
   container.innerHTML = `
     <div class="heading-container">
+        <a class="page-back" href="/" data-nav aria-label="Back to home">← Home</a>
         <h3>Want to get in contact with us?</h3>
     </div>
     <div class="paragraph-container paragraph-container--center">

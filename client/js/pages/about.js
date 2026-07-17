@@ -1,6 +1,7 @@
 export function renderAbout(container) {
   container.innerHTML = `
     <div class="heading-container">
+        <a class="page-back" href="/" data-nav aria-label="Back to home">← Home</a>
         <h3>Kahu: Discover Your Cat's Breed!</h3>
     </div>
     <div class="paragraph-container">

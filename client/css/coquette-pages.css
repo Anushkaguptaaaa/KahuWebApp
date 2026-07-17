@@ -36,6 +36,33 @@ body.coquette-page::before {
     box-shadow: 0 8px 32px rgba(219, 112, 147, 0.12);
 }
 
+.coquette-page .page-back {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(184, 92, 117, 0.4);
+    border-bottom: 1px solid rgba(184, 92, 117, 0.4);
+    background: rgba(255, 255, 255, 0.85);
+    color: #8b3a52;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 2px 10px rgba(219, 112, 147, 0.12);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.coquette-page .page-back:hover {
+    background: #fff;
+    color: #b85c75;
+    border-bottom-color: rgba(184, 92, 117, 0.4);
+}
+
 .coquette-page .heading-container::before,
 .coquette-page .heading-container::after {
     content: '♡';
@@ -232,6 +259,10 @@ body.coquette-page::before {
 }
 
 @media (max-width: 600px) {
+    .coquette-page .heading-container {
+        padding: 56px 24px 36px;
+    }
+
     .coquette-page .heading-container::before,
     .coquette-page .heading-container::after {
         display: none;

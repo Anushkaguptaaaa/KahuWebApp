@@ -17,6 +17,7 @@ function renderBreedCard(breed) {
 export function renderGallery(container) {
   container.innerHTML = `
     <div class="heading-container">
+        <a class="page-back" href="/" data-nav aria-label="Back to home">← Home</a>
         <h3>Gallery of Fame: Most Popular Indian Cat Breeds</h3>
     </div>
     ${BREEDS.map(renderBreedCard).join('')}
