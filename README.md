@@ -1,4 +1,6 @@
 # Kahu - Cat Breed Detection Web Application
+Why "Kahu"?
+In Hawaiian, kahu means guardian, caretaker, or steward. The name reflects the app's mission of empowering pet owners with reliable guidance so they can become better caretakers for their cats. Rather than replacing the bond between a pet and its owner, Kahu is designed to support and strengthen it.
 
 Kahu helps you identify cat breeds from photos, explore breed info, chat with Joe (a cat & vet-care assistant), and play cat-themed brain teasers.
 
