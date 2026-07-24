@@ -1,99 +1,133 @@
 # Kahu - Cat Breed Detection Web Application
 
-Kahu is a web application that allows users to upload images of cats and get information about the detected breed using The Cat API.
+Kahu helps you identify cat breeds from photos, explore breed info, chat with Joe (a cat & vet-care assistant), and play cat-themed brain teasers.
 
 ## Project Structure
 
-This is a monorepo containing:
-
-- `client/`: Static HTML/CSS/JS frontend
-- `backend/`: Node.js/Express/TypeScript backend API (also serves the frontend)
+```
+KahuWebApp/
+├── client/          # Vanilla JS SPA (HTML/CSS/JS)
+├── backend/         # Express + TypeScript API (also serves client in local dev)
+│   └── src/         # Edit TypeScript here (dist/ is build output)
+├── api/             # Vercel serverless entry for /api/*
+├── vercel.json      # Vercel deploy config
+└── package.json     # Root deps for Vercel builds
+```
 
 ## Features
 
-- Upload cat images for breed detection
-- View detailed information about detected cat breeds
-- Responsive design for mobile and desktop
-- User authentication pages (login/signup)
-- Gallery of cat breeds
+- Upload a cat photo for breed detection (Roboflow)
+- Results page with confidence scores
+- Gallery of popular Indian cat breeds
+- About & Contact pages
+- **Ask Joe** chatbot (Gemini) for cat care and general vet-related questions
+- Brain teasers on the home page:
+  - **Cat Memory Match**
+  - **N-Queens Puzzle** (Easy 4×4 / Medium 6×6 / Hard 8×8)
+- Responsive coquette-themed UI for mobile and desktop
+- SPA routing (`/`, `/about`, `/gallery`, `/contact`, `/results`)
 
 ## Tech Stack
 
 ### Frontend
-- HTML, CSS, JavaScript
-- Bootstrap
-- jQuery
+- HTML, CSS, vanilla JavaScript (ES modules)
+- Bootstrap + jQuery (carousels / legacy UI)
+- Client-side SPA router
 
 ### Backend
-- Node.js
-- Express
-- TypeScript
-- Multer for file uploads
-- Axios for API calls to The Cat API
+- Node.js + Express + TypeScript
+- Multer (memory uploads)
+- Axios + FormData → Roboflow breed model
+- Google Gemini (`@google/genai`) for Joe chat
 
-## Setup Instructions
+## Local Setup
 
 ### Prerequisites
-- Node.js (v18+)
-- npm or yarn
+- Node.js 18+
+- npm
 
-### Backend Setup
-1. Navigate to the backend directory:
-   ```
-   cd backend
-   ```
+### 1. Install backend dependencies
+```bash
+cd backend
+npm install
+```
 
-2. Install dependencies:
-   ```
-   npm install
-   ```
+### 2. Environment variables
+Create `backend/.env`:
 
-3. Create a `.env` file in the backend directory with the following variables:
-   ```
-   PORT=5001
-   CAT_API_KEY=your_cat_api_key_here
-   ```
-   You can get a Cat API key from [https://thecatapi.com/](https://thecatapi.com/)
+```env
+PORT=5001
+ROBOFLOW_API_KEY=your_roboflow_api_key
+ROBOFLOW_MODEL=cat-breeds-2n7zk/2
+ROBOFLOW_BASE_URL=https://serverless.roboflow.com
+GEMINI_API_KEY=your_gemini_api_key
+GEMINI_MODEL=gemini-2.5-flash
+```
 
-   Note: macOS uses port 5000 for AirPlay Receiver, so the app defaults to port 5001.
+Notes:
+- macOS often uses port 5000 for AirPlay, so prefer `5001`.
+- Never commit `.env` (it is gitignored).
 
-4. Start the development server:
-   ```
-   npm run dev
-   ```
-   Open http://localhost:5001 in your browser. The backend serves both the API and the static frontend.
+### 3. Run the app
+```bash
+cd backend
+npm run dev
+```
+
+Open [http://localhost:5001](http://localhost:5001).  
+The backend serves both the API and the static frontend from `client/`.
+
+### Optional: production-style build
+```bash
+cd backend
+npm run build
+npm start
+```
 
 ## API Endpoints
 
-### Upload Image for Breed Detection
-- **Endpoint:** `POST /api/upload`
-- **Request:** multipart/form-data with key "image" and value as the image file
-- **Response:**
-  ```json
-  {
-    "success": true,
-    "breeds": [
-      {
-        "id": "beng",
-        "name": "Bengal",
-        "origin": "United States",
-        "description": "...",
-        "temperament": "Alert, Agile, Energetic, Demanding, Intelligent",
-        "life_span": "12 - 15 years",
-        "weight": {
-          "imperial": "6 - 12",
-          "metric": "3 - 5"
-        }
-      }
-    ],
-    "imageUrl": "https://cdn2.thecatapi.com/images/abc123.jpg"
-  }
-  ```
+### `POST /api/upload`
+Detect breeds from an uploaded image.
 
-## Future Enhancements
-- Save uploaded image & result to database
-- User authentication for history tracking
-- Joey chatbot integration with WebSocket API
+- **Body:** `multipart/form-data` with field `image`
+- **Success response:**
+```json
+{
+  "success": true,
+  "breeds": [
+    {
+      "name": "bengal",
+      "confidence": 0.92
+    }
+  ]
+}
+```
+
+### `POST /api/chat`
+Chat with Joe.
+
+- **Body:** `{ "message": "How often should I feed my cat?" }`
+- **Success response:**
+```json
+{
+  "success": true,
+  "reply": "..."
+}
+```
+
+## Deploy on Vercel
+
+1. Push the repo to GitHub and import it in Vercel.
+2. Keep **Root Directory** as the repo root (not `backend/` or `client/`).
+3. Add environment variables in Vercel:
+   - `ROBOFLOW_API_KEY` (required)
+   - `GEMINI_API_KEY` (required)
+   - Optional: `ROBOFLOW_MODEL`, `ROBOFLOW_BASE_URL`, `GEMINI_MODEL`
+4. Do **not** set `PORT` on Vercel.
+5. Redeploy after changing env vars.
+
+`vercel.json` serves `client/` as static output, rewrites SPA routes to `index.html`, and routes `/api/*` to the serverless function in `api/`.
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
