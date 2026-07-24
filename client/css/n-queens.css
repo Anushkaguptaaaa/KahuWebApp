@@ -1,8 +1,8 @@
 /* N-Queens puzzle */
 
 .nqueens-section {
-    padding: 75px 0 90px;
-    background: #f8f7fa;
+    padding: 0;
+    background: transparent;
 }
 
 .nqueens-section__intro {
@@ -10,7 +10,8 @@
     margin-bottom: 28px;
 }
 
-.nqueens-section__intro h2 {
+.nqueens-section__intro h2,
+.nqueens-section__intro h3 {
     margin-bottom: 10px;
 }
 

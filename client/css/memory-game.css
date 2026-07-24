@@ -299,11 +299,12 @@
 
 /* Embedded on homepage */
 .memory-section {
-    padding: 75px 0 90px;
-    background: #f8f7fa;
+    padding: 0;
+    background: transparent;
 }
 
-.memory-section__intro h2 {
+.memory-section__intro h2,
+.memory-section__intro h3 {
     color: #050304;
 }
 
